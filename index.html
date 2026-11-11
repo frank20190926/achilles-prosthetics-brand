@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Achilles Prosthetics and Orthotics · Identity refresh</title>
+<meta name="description" content="Logo, typeface system, style sheet and project proposal for Achilles Prosthetics and Orthotics.">
+<link rel="icon" href="favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="favicon-192.png">
+<style>
+@font-face{font-family:"Plus Jakarta Sans";font-weight:500;src:url(fonts/PlusJakartaSans-500.ttf);font-display:swap}
+@font-face{font-family:"Plus Jakarta Sans";font-weight:600;src:url(fonts/PlusJakartaSans-600.ttf);font-display:swap}
+@font-face{font-family:"Plus Jakarta Sans";font-weight:700;src:url(fonts/PlusJakartaSans-700.ttf);font-display:swap}
+@font-face{font-family:"Plus Jakarta Sans";font-weight:800;src:url(fonts/PlusJakartaSans-800.ttf);font-display:swap}
+@font-face{font-family:"Inter";font-weight:400;src:url(fonts/Inter-400.ttf);font-display:swap}
+@font-face{font-family:"Inter";font-weight:500;src:url(fonts/Inter-500.ttf);font-display:swap}
+@font-face{font-family:"Inter";font-weight:600;src:url(fonts/Inter-600.ttf);font-display:swap}
+@font-face{font-family:"IBM Plex Mono";font-weight:500;src:url(fonts/IBMPlexMono-500.ttf);font-display:swap}
+:root{--paper:#F7F5F1;--mist:#ECE9E3;--ink:#111315;--soft:#55585B;--rule:#C9CBCD;--maroon:#6E1423;--lift:#C2364F;--white:#FFFFFF;
+--display:"Plus Jakarta Sans",system-ui,sans-serif;--body:"Inter",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-underline-offset:.22em;text-decoration-thickness:1px}
+a:hover{color:var(--maroon)}
+:focus-visible{outline:2px solid var(--maroon);outline-offset:3px}
+.wrap{max-width:1320px;margin:0 auto;padding:0 clamp(20px,4.5vw,64px)}
+.label{font:500 12px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--soft);margin:0}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance}
+h1{font-weight:800;font-size:clamp(44px,7.2vw,104px);line-height:.98;letter-spacing:-.03em}
+h2{font-weight:700;font-size:clamp(30px,3.4vw,46px);line-height:1.1;letter-spacing:-.02em}
+h3{font-weight:600;font-size:21px;line-height:1.3}
+p{margin:0;max-width:62ch;text-wrap:pretty}
+.soft{color:var(--soft)}
+
+.mast{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:26px 0;border-bottom:1px solid var(--rule)}
+.mast img{height:44px;width:auto}
+.mast nav{display:flex;flex-wrap:wrap;gap:6px 26px;justify-content:flex-end}
+.mast nav a{font:500 12px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--soft);padding:6px 0}
+.mast nav a:hover{color:var(--maroon)}
+
+.hero{display:grid;grid-template-columns:5fr 7fr;gap:clamp(24px,5vw,80px);align-items:end;padding:clamp(48px,8vw,112px) 0 clamp(36px,5vw,64px)}
+.hero p{margin-top:28px;font-size:19px}
+.hero .get{margin-top:34px;display:flex;flex-direction:column;gap:10px;font-weight:500}
+.hero figure{margin:0}
+.hero figure img{width:100%;height:auto}
+.hero figcaption{margin-top:6px;display:flex;justify-content:space-between;gap:16px}
+
+section{padding:clamp(56px,7vw,104px) 0;border-top:1px solid var(--rule)}
+.head{display:grid;grid-template-columns:5fr 7fr;gap:clamp(24px,5vw,80px);align-items:start;margin-bottom:clamp(28px,4vw,52px)}
+.head .label{margin-bottom:14px}
+
+.stage{aspect-ratio:16/7;display:grid;place-items:center;border:1px solid var(--rule);transition:background-color .2s}
+.stage svg{width:auto;height:auto;max-width:86%;max-height:92%}
+.stage.is-mark svg{max-height:74%}
+.controls{display:flex;flex-wrap:wrap;gap:22px 56px;margin-top:26px}
+.controls fieldset{border:0;padding:0;margin:0;min-width:0}
+.controls legend{padding:0;margin-bottom:8px}
+.opt{display:flex;flex-wrap:wrap;gap:4px 22px}
+.opt button{appearance:none;background:none;border:0;border-bottom:2px solid transparent;border-radius:0;padding:6px 0 5px;font:500 16px/1.3 var(--body);color:var(--soft);cursor:pointer}
+.opt button:hover{color:var(--ink)}
+.opt button[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--maroon)}
+.opt button:disabled{color:#A3A5A7;cursor:default}
+.file{margin-top:22px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;padding-top:14px;border-top:1px solid var(--rule)}
+.compare{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:40px;border:1px solid var(--rule)}
+.compare button{appearance:none;border:0;border-radius:0;padding:0;cursor:pointer;display:block;text-align:left}
+.compare .pane{aspect-ratio:4/3;display:grid;place-items:center}
+.compare svg{max-width:84%;max-height:84%;width:auto;height:auto}
+.compare .cap{display:block;background:var(--paper);padding:12px 14px;border-top:1px solid var(--rule)}
+.compare button+button .cap,.compare button+button .pane{border-left:1px solid var(--rule)}
+.compare button[aria-pressed="true"] .cap{color:var(--ink);box-shadow:inset 0 2px 0 var(--maroon)}
+
+.faces{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px)}
+.aa{font-size:clamp(120px,17vw,230px);line-height:.9;letter-spacing:-.03em;margin:0 0 18px -.04em}
+.faces ul{list-style:none;margin:16px 0 0;padding:0;font-size:19px}
+.try{margin:56px 0 0;display:grid;grid-template-columns:5fr 7fr;gap:clamp(24px,5vw,80px);align-items:end}
+.try label{display:block;margin-bottom:8px}
+.try input{width:100%;font:400 17px/1.4 var(--body);color:var(--ink);background:var(--white);border:1px solid #8C8F92;border-radius:2px;padding:12px 14px}
+.scale{margin-top:28px;border-bottom:1px solid var(--rule)}
+.scale>div{display:grid;grid-template-columns:5fr 7fr;gap:clamp(24px,5vw,80px);padding:22px 0;border-top:1px solid var(--rule);align-items:start}
+.scale dt{font:600 17px/1.3 var(--display)}
+.scale dt span{display:block;margin-top:4px;font:500 12px/1.5 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
+.scale dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.t-h1{font:800 56px/60px var(--display);letter-spacing:-.02em}
+.t-h2{font:700 36px/42px var(--display);letter-spacing:-.01em}
+.t-sub{font:600 22px/30px var(--display);color:var(--maroon)}
+.t-body{font:400 17px/27px var(--body);max-width:62ch}
+.t-ui{font:600 15px/20px var(--body);letter-spacing:.01em}
+.t-cap{font:500 13px/18px var(--body);color:var(--soft)}
+.t-acc{font:500 12px/16px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+
+.colors{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.chip{appearance:none;display:block;width:100%;aspect-ratio:7/4;border:0;border-radius:0;cursor:pointer;padding:0}
+.chip.w{border:1px solid var(--rule)}
+.colors h3{margin-top:16px}
+.colors p{font-size:15px}
+.colors dl{margin:14px 0 0;border-bottom:1px solid var(--rule)}
+.colors dl div{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-top:1px solid var(--rule)}
+.colors dt{font:500 12px/1.6 var(--mono);letter-spacing:.08em;color:var(--soft)}
+.colors dd{margin:0;font:500 14px/1.4 var(--mono);font-variant-numeric:tabular-nums;white-space:pre}
+.note{margin-top:22px;font-size:15px}
+.tw{overflow-x:auto}
+.tw table{min-width:640px}
+table{width:100%;border-collapse:collapse;margin-top:40px;font-size:16px}
+th,td{text-align:left;padding:12px 16px 12px 0;border-top:1px solid var(--rule);vertical-align:top}
+th{font:500 12px/1.6 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
+td.num,th.num{text-align:right;padding-right:0;font-size:14px}
+tr:last-child td{border-bottom:1px solid var(--rule)}
+
+.boards{display:grid;grid-template-columns:1fr 1fr;gap:36px 28px}
+.boards figure{margin:0}
+.boards img{width:100%;height:auto;border:1px solid var(--rule)}
+.boards figcaption{margin-top:10px;display:flex;justify-content:space-between;gap:16px}
+
+.prop{display:grid;grid-template-columns:5fr 7fr;gap:clamp(24px,5vw,80px)}
+.prop h3{margin-bottom:12px}
+.prop .col>*+h3{margin-top:44px}
+.ms{list-style:none;margin:0;padding:0;border-bottom:1px solid var(--rule)}
+.ms li{display:grid;grid-template-columns:64px 1fr;gap:8px;padding:18px 0;border-top:1px solid var(--rule)}
+.ms .num{color:var(--maroon);font-size:15px;padding-top:3px}
+.ms strong{font:600 18px/1.3 var(--display);display:block;margin-bottom:4px}
+.ms p{font-size:16px;color:var(--soft)}
+
+.dl{list-style:none;margin:0;padding:0;border-bottom:1px solid var(--rule)}
+.dl li{display:grid;grid-template-columns:5fr 4fr 3fr;gap:16px;align-items:baseline;padding:20px 0;border-top:1px solid var(--rule)}
+.dl strong{font:600 19px/1.3 var(--display)}
+.dl a{font-weight:500;justify-self:end}
+footer{border-top:1px solid var(--rule);padding:28px 0 56px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px}
+
+@media (max-width:860px){
+  .hero,.head,.prop,.try,.faces{grid-template-columns:1fr}
+  .scale>div{grid-template-columns:1fr;gap:10px}
+  .colors{grid-template-columns:1fr 1fr}
+  .compare{grid-template-columns:1fr 1fr}
+  .compare button:nth-child(3) .cap,.compare button:nth-child(3) .pane{border-left:0}
+  .boards{grid-template-columns:1fr}
+  .stage{aspect-ratio:4/3}
+  .t-h1{font-size:40px;line-height:44px}.t-h2{font-size:28px;line-height:34px}
+  .dl li{grid-template-columns:1fr}.dl a{justify-self:start}
+  .mast img{height:34px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="mast">
+  <a href="#top" aria-label="Achilles Prosthetics and Orthotics"><img src="vectors/achilles_horizontal_light.svg" alt="Achilles Prosthetics &amp; Orthotics" width="390" height="120" style="margin:-12px 0 -12px -14px;height:68px"></a>
+  <nav aria-label="Sections">
+    <a href="#logo">Logo</a><a href="#type">Typeface</a><a href="#color">Color</a><a href="#boards">Boards</a><a href="#proposal">Proposal</a><a href="#files">Files</a>
+  </nav>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div>
+    <p class="label">Achilles Prosthetics and Orthotics</p>
+    <h1 style="margin-top:22px">Identity refresh</h1>
+    <p>A new mark, wordmark and sans-serif type system for Achilles Prosthetics and Orthotics, built for the website and social channels first and ready for print and merchandise.</p>
+    <div class="get">
+      <a href="downloads/Achilles_Prosthetics_Brand_Package.zip" download>Download the brand package (ZIP, 6.5 MB)</a>
+      <a href="downloads/Achilles_Brand_Style_Sheet_and_Proposal.pdf">Style sheet and proposal (PDF, 2.6 MB)</a>
+    </div>
+  </div>
+  <figure>
+    <img src="vectors/achilles_stacked_light.svg" alt="Stacked lockup: the A mark above ACHILLES, Prosthetics &amp; Orthotics" width="2452" height="2172" style="max-height:520px;object-fit:contain">
+    <figcaption><span class="label">Stacked lockup</span><span class="label">Strut 68°</span></figcaption>
+  </figure>
+</div>
+
+<section id="logo">
+  <div class="head">
+    <div><p class="label">01 · Logo</p><h2>One mark, four grounds</h2></div>
+    <p>The A is two parts. A carbon strut leans at 68° and a maroon blade runs through to the toe, joined by a pin. Switch the lockup, the descriptor and the ground to see every version in the package.</p>
+  </div>
+  <div class="stage" id="stage" role="img" aria-label="Logo preview"></div>
+  <div class="controls">
+    <fieldset><legend class="label">Lockup</legend><div class="opt" data-k="lockup">
+      <button type="button" data-v="horizontal">Horizontal</button><button type="button" data-v="stacked">Stacked</button><button type="button" data-v="mark">Mark</button></div></fieldset>
+    <fieldset><legend class="label">Version</legend><div class="opt" data-k="scheme">
+      <button type="button" data-v="light">Color</button><button type="button" data-v="reverse">Reversed</button><button type="button" data-v="carbon">Dark ground</button><button type="button" data-v="black">One-color</button></div></fieldset>
+    <fieldset><legend class="label">Descriptor</legend><div class="opt" data-k="sub">
+      <button type="button" data-v="">Prosthetics &amp; Orthotics</button><button type="button" data-v="_and">Prosthetics and Orthotics</button></div></fieldset>
+  </div>
+  <div class="file"><p class="label" id="fname" aria-live="polite"></p><a id="fget" href="#" download>Download this SVG</a></div>
+  <div class="compare" id="compare" aria-label="The same lockup on each ground"></div>
+</section>
+
+<section id="type">
+  <div class="head">
+    <div><p class="label">02 · Typeface system</p><h2>Two sans-serifs, one accent</h2></div>
+    <p>Plus Jakarta Sans carries headings and the wordmark. Inter sets body copy and interface text. IBM Plex Mono is an optional accent for labels and reference numbers. All three are free for commercial use under the SIL Open Font License.</p>
+  </div>
+  <div class="faces">
+    <div><p class="aa" style="font-family:var(--display);font-weight:800" aria-hidden="true">Aa</p><h3>Plus Jakarta Sans</h3><p class="label">Display · Headings</p>
+      <ul><li style="font:800 19px var(--display)">ExtraBold 800</li><li style="font:700 19px var(--display)">Bold 700</li><li style="font:600 19px var(--display)">SemiBold 600</li></ul></div>
+    <div><p class="aa" style="font-family:var(--body);font-weight:400;color:var(--maroon)" aria-hidden="true">Aa</p><h3>Inter</h3><p class="label">Body copy · Patient UI</p>
+      <ul><li style="font:400 19px var(--body)">Regular 400</li><li style="font:500 19px var(--body)">Medium 500</li><li style="font:600 19px var(--body)">SemiBold 600</li></ul></div>
+  </div>
+  <div class="try">
+    <div><label class="label" for="try">Try your own heading</label><input id="try" type="text" maxlength="80" value="Four decades of clinical care." autocomplete="off"></div>
+    <p class="soft" style="font-size:15px">Sizes below are web pixels: size / line height.</p>
+  </div>
+  <dl class="scale">
+    <div><dt>H1 Display<span>PJS ExtraBold 800 · 56 / 60 · -0.02 em</span></dt><dd class="t-h1" data-try>Four decades of clinical care.</dd></div>
+    <div><dt>H2 Heading<span>PJS Bold 700 · 36 / 42 · -0.01 em</span></dt><dd class="t-h2" data-try>Four decades of clinical care.</dd></div>
+    <div><dt>Subhead<span>PJS SemiBold 600 · 22 / 30</span></dt><dd class="t-sub">Care that continues after the first fitting.</dd></div>
+    <div><dt>Body<span>Inter Regular 400 · 17 / 27</span></dt><dd class="t-body">Your first visit starts with a conversation. A clinician looks at how you move today, asks what you want to get back to, and explains each step before a device is cast or fitted.</dd></div>
+    <div><dt>UI label<span>Inter SemiBold 600 · 15 / 20 · +0.01 em</span></dt><dd class="t-ui">Book an appointment</dd></div>
+    <div><dt>Caption<span>Inter Medium 500 · 13 / 18</span></dt><dd class="t-cap">Bring your prescription and any device you wear today.</dd></div>
+    <div><dt>Accent<span>IBM Plex Mono 500 · 12 / 16 · +0.12 em caps</span></dt><dd class="t-acc">Clinic hours · Referrals · Device care</dd></div>
+  </dl>
+</section>
+
+<section id="color">
+  <div class="head">
+    <div><p class="label">03 · Color and rules</p><h2>Maroon, black, white</h2></div>
+    <p>The three brand colors stay. One lifted maroon is added for Carbon Black grounds only, where Clinical Maroon would drop to 1.6:1. Select a swatch to copy its HEX value.</p>
+  </div>
+  <div class="colors" id="colors"></div>
+  <p class="note soft" id="copied" aria-live="polite">Pantone references are nearest coated matches. Confirm against a swatch book before press.</p>
+  <div class="tw" tabindex="0" role="region" aria-label="Clear space and minimum sizes">
+  <table>
+    <thead><tr><th>Artwork</th><th>Clear space</th><th class="num">Print minimum</th><th class="num">Screen minimum</th></tr></thead>
+    <tbody>
+      <tr><td>Horizontal lockup</td><td>X on every side. X is half the mark height.</td><td class="num">27 mm · 1.06 in wide</td><td class="num">144 px wide</td></tr>
+      <tr><td>Stacked lockup</td><td>X on every side</td><td class="num">18 mm · 0.71 in wide</td><td class="num">96 px wide</td></tr>
+      <tr><td>Strut mark</td><td>X on every side</td><td class="num">8 mm · 0.31 in high</td><td class="num">48 px high</td></tr>
+      <tr><td>Small-size cut</td><td>From 16 to 32 px use achilles_favicon_small.svg: wider channel, no pin.</td><td class="num">Screen only</td><td class="num">16 px</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="boards">
+  <div class="head">
+    <div><p class="label">04 · Presentation boards</p><h2>Four boards</h2></div>
+    <p>Each board opens at full size, 3200 × 2400 px.</p>
+  </div>
+  <div class="boards">
+    <figure><a href="boards/Board_01_Primary_Identity.jpg"><img src="boards/Board_01_Primary_Identity_1600.jpg" width="1600" height="1200" alt="Board 1: primary horizontal lockup, reversed stacked lockup, app icon and avatar"></a><figcaption><span class="label">01 · Primary identity</span></figcaption></figure>
+    <figure><a href="boards/Board_02_Typography_and_Digital.jpg"><img src="boards/Board_02_Typography_and_Digital_1600.jpg" width="1600" height="1200" alt="Board 2: typeface system, type scale, website, LinkedIn, Instagram and favicon"></a><figcaption><span class="label">02 · Typography and digital</span></figcaption></figure>
+    <figure><a href="boards/Board_03_Brand_Style_Sheet.jpg"><img src="boards/Board_03_Brand_Style_Sheet_1600.jpg" width="1600" height="1200" alt="Board 3: clear space, color system, minimum sizes and logo misuse"></a><figcaption><span class="label">03 · Brand style sheet</span></figcaption></figure>
+    <figure><a href="boards/Board_04_Rollout_and_Merchandise.jpg"><img src="boards/Board_04_Rollout_and_Merchandise_1600.jpg" width="1600" height="1200" alt="Board 4: entrance glazing, wayfinding, white coat, polo, tote, stationery and the project proposal"></a><figcaption><span class="label">04 · Rollout and merchandise</span></figcaption></figure>
+  </div>
+</section>
+
+<section id="proposal">
+  <div class="head">
+    <div><p class="label">05 · Project proposal</p><h2>Approach, milestones, assets</h2></div>
+    <p>What the work covers, how it is staged and how the files are used.</p>
+  </div>
+  <div class="prop">
+    <div class="col">
+      <h3>Creative approach</h3>
+      <p>Achilles Prosthetics and Orthotics has cared for patients for four decades. The refresh keeps that standing and redraws it for screens. The A is built from two parts: a carbon strut set at 68°, the forward lean of an energy-storing carbon-fiber blade in mid-stride, and a maroon blade that runs through to the toe. A pin joins them where a joint would sit. The L and E of the wordmark are cut to the same 68°.</p>
+      <h3>Asset flexibility</h3>
+      <p>Every master is drawn as vector paths with no live type, so one file scales from a 16 px favicon to a clinic sign without redrawing.</p>
+      <table style="margin-top:20px">
+        <tbody>
+          <tr><td>Website</td><td class="num">SVG · PNG · favicon 16–512 px</td></tr>
+          <tr><td>Social media</td><td class="num">Avatar and cover crops · PNG</td></tr>
+          <tr><td>Print and signage</td><td class="num">AI · EPS · PDF · CMYK and Pantone</td></tr>
+          <tr><td>Apparel</td><td class="num">One- and two-color embroidery art</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <h3>Milestone structure</h3>
+      <ol class="ms">
+        <li><span class="num">M1</span><div><strong>Final mark and wordmark lockup</strong><p>Refinements from your feedback on the mark, the 68° terminals and the letter spacing. Horizontal and stacked lockups signed off.</p></div></li>
+        <li><span class="num">M2</span><div><strong>Production masters</strong><p>AI, EPS, PDF, SVG and PNG for print, digital and embroidery, in color, reversed, one-color and dark-ground versions.</p></div></li>
+        <li><span class="num">M3</span><div><strong>Style sheet and rollout support</strong><p>Final style sheet PDF, plus help placing the identity on the website and the social channels.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="files">
+  <div class="head">
+    <div><p class="label">06 · Files</p><h2>Downloads</h2></div>
+    <p>All logo files are outlined paths. No fonts need to be installed to open them.</p>
+  </div>
+  <ul class="dl">
+    <li><strong>Brand package</strong><span class="label">ZIP · 6.5 MB · 17 masters in SVG, PDF, AI, EPS · PNG · favicons · boards</span><a href="downloads/Achilles_Prosthetics_Brand_Package.zip" download>Download ZIP</a></li>
+    <li><strong>Style sheet and proposal</strong><span class="label">PDF · 2.6 MB · 4 pages</span><a href="downloads/Achilles_Brand_Style_Sheet_and_Proposal.pdf">Open PDF</a></li>
+    <li><strong>Primary lockup</strong><span class="label">SVG · horizontal, color</span><a href="vectors/achilles_horizontal_light.svg" download>Download SVG</a></li>
+    <li><strong>Favicon, small-size cut</strong><span class="label">SVG · 16 to 32 px</span><a href="vectors/achilles_favicon_small.svg" download>Download SVG</a></li>
+  </ul>
+</section>
+</main>
+
+<footer>
+  <p class="label">Achilles Prosthetics and Orthotics · Identity refresh</p>
+  <p class="label">Sample copy for demonstration · Typefaces under SIL OFL 1.1</p>
+</footer>
+</div>
+
+<script>
+(function () {
+  var INK = '#111315', MAROON = '#6E1423', LIFT = '#C2364F', WHITE = '#FFFFFF', PAPER = '#F7F5F1';
+  var SCHEMES = {
+    light:   {name: 'Color',       ground: PAPER,  fills: {strut: INK, blade: MAROON, pin: MAROON, word: INK, sub: MAROON}},
+    reverse: {name: 'Reversed',    ground: MAROON, fills: {strut: WHITE, blade: WHITE, pin: WHITE, word: WHITE, sub: WHITE}},
+    carbon:  {name: 'Dark ground', ground: INK,    fills: {strut: WHITE, blade: LIFT, pin: LIFT, word: WHITE, sub: WHITE}},
+    black:   {name: 'One-color',   ground: WHITE,  fills: {strut: INK, blade: INK, pin: INK, word: INK, sub: INK}}
+  };
+  // master file for each combination that ships in the package
+  var FILES = {
+    horizontal: {light: 'horizontal_light', reverse: 'horizontal_dark', carbon: 'horizontal_carbon', black: 'horizontal_black'},
+    stacked: {light: 'stacked_light', reverse: 'stacked_dark'},
+    mark: {light: 'mark_color', reverse: 'mark_white', black: 'mark_black'}
+  };
+  var state = {lockup: 'horizontal', scheme: 'light', sub: ''}, cache = {};
+  var stage = document.getElementById('stage'), compare = document.getElementById('compare');
+  var fname = document.getElementById('fname'), fget = document.getElementById('fget');
+
+  function source() {
+    var f = state.lockup === 'mark' ? 'achilles_mark_color' : 'achilles_' + state.lockup + '_light' + state.sub;
+    if (!cache[f]) cache[f] = fetch('vectors/' + f + '.svg').then(function (r) { return r.text(); });
+    return cache[f];
+  }
+  function draw(text, scheme) {
+    var svg = new DOMParser().parseFromString(text, 'image/svg+xml').documentElement;
+    svg.removeAttribute('width'); svg.removeAttribute('height');
+    svg.setAttribute('aria-hidden', 'true');
+    var fills = SCHEMES[scheme].fills;
+    Object.keys(fills).forEach(function (id) {
+      var p = svg.querySelector('#' + id);
+      if (p) { p.setAttribute('fill', fills[id]); p.removeAttribute('id'); }
+    });
+    return svg;
+  }
+  function render() {
+    document.querySelectorAll('.opt').forEach(function (g) {
+      g.querySelectorAll('button').forEach(function (b) {
+        b.setAttribute('aria-pressed', String(state[g.dataset.k] === b.dataset.v));
+        if (g.dataset.k === 'sub') b.disabled = state.lockup === 'mark';
+      });
+    });
+    source().then(function (text) {
+      stage.style.backgroundColor = SCHEMES[state.scheme].ground;
+      stage.classList.toggle('is-mark', state.lockup === 'mark');
+      stage.replaceChildren(draw(text, state.scheme));
+      compare.replaceChildren.apply(compare, Object.keys(SCHEMES).map(function (k) {
+        var b = document.createElement('button'), pane = document.createElement('span'), cap = document.createElement('span');
+        b.type = 'button'; b.setAttribute('aria-pressed', String(k === state.scheme));
+        b.setAttribute('aria-label', SCHEMES[k].name + ' version');
+        pane.className = 'pane'; pane.style.backgroundColor = SCHEMES[k].ground; pane.appendChild(draw(text, k));
+        cap.className = 'cap label'; cap.textContent = SCHEMES[k].name + ' · ' + SCHEMES[k].ground;
+        b.append(pane, cap);
+        b.addEventListener('click', function () { state.scheme = k; render(); });
+        return b;
+      }));
+      var m = FILES[state.lockup][state.scheme];
+      if (m) {
+        var file = 'achilles_' + m + (state.lockup === 'mark' ? '' : state.sub) + '.svg';
+        fname.textContent = file; fget.href = 'vectors/' + file; fget.hidden = false;
+      } else {
+        fname.textContent = 'Live recolor of the master paths · not a separate file in the package';
+        fget.hidden = true;
+      }
+    });
+  }
+  document.querySelectorAll('.opt button').forEach(function (b) {
+    b.addEventListener('click', function () { state[b.parentNode.dataset.k] = b.dataset.v; render(); });
+  });
+  render();
+
+  var COLORS = [
+    ['Clinical Maroon', MAROON, '110  20  35', ' 20  93  73  44', '188 C', 'Blade, descriptor, grounds'],
+    ['Dark-Ground Maroon', LIFT, '194  54  79', '  6  91  54   7', '7636 C', 'Blade on Carbon Black only'],
+    ['Carbon Black', INK, ' 17  19  21', ' 77  71  63  75', 'Black 6 C', 'Strut, wordmark, body copy'],
+    ['Pure White', WHITE, '255 255 255', '  0   0   0   0', 'Paper', 'Reversed lockups, screen ground']
+  ];
+  var note = document.getElementById('copied'), noteText = note.textContent, timer;
+  COLORS.forEach(function (c) {
+    var d = document.createElement('div');
+    var chip = document.createElement('button');
+    chip.type = 'button'; chip.className = 'chip' + (c[1] === WHITE ? ' w' : ''); chip.style.backgroundColor = c[1];
+    chip.setAttribute('aria-label', 'Copy ' + c[0] + ' ' + c[1]);
+    chip.addEventListener('click', function () {
+      var done = function () {
+        note.textContent = c[1] + ' copied.';
+        clearTimeout(timer); timer = setTimeout(function () { note.textContent = noteText; }, 1800);
+      };
+      if (navigator.clipboard) navigator.clipboard.writeText(c[1]).then(done, done); else done();
+    });
+    var h = document.createElement('h3'); h.textContent = c[0];
+    var p = document.createElement('p'); p.className = 'soft'; p.textContent = c[5];
+    var dl = document.createElement('dl');
+    [['HEX', c[1]], ['RGB', c[2]], ['CMYK', c[3]], ['PANTONE', c[4]]].forEach(function (r) {
+      var row = document.createElement('div'), dt = document.createElement('dt'), dd = document.createElement('dd');
+      dt.textContent = r[0]; dd.textContent = r[1]; row.append(dt, dd); dl.appendChild(row);
+    });
+    d.append(chip, h, p, dl);
+    document.getElementById('colors').appendChild(d);
+  });
+
+  var input = document.getElementById('try');
+  input.addEventListener('input', function () {
+    document.querySelectorAll('[data-try]').forEach(function (el) { el.textContent = input.value || 'Four decades of clinical care.'; });
+  });
+})();
+</script>
+</body>
+</html>
